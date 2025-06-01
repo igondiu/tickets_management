@@ -84,3 +84,5 @@ Use this command to run the application:
 ```shell
 python app/main.py
 ```
+
+In a web browser paste this URL: http://localhost:8000  A welcome page will show :).
