@@ -1,14 +1,19 @@
 import logging
 from logging.handlers import TimedRotatingFileHandler
 from os.path import join
+import sys
+from pathlib import Path
+
+# Append root dir path to the sys path so that imports are correctly working no matters from where the app is run.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import uvicorn
 from fastapi import FastAPI
 
 import settings as app_settings
-from app.database import create_db_and_tables
-from app.routers.default import router as default_router
-from app.routers.ticket import router as ticket_router
+from database import create_db_and_tables
+from routers.default import router as default_router
+from routers.ticket import router as ticket_router
 application = FastAPI()
 application.include_router(default_router)
 application.include_router(ticket_router)
