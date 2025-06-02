@@ -21,7 +21,7 @@ tickets_management_backend/
 │   │   └── endpoints/
 │   │       ├── __init__.py
 │   │       └── ticket.py      # Ticket endpoints
-│   ├── kernels/               # CRUD operations mainly
+│   ├── crud/                  # CRUD operations mainly
 │   │   ├── __init__.py
 │   │   └── ticket.py          # Ticket CRUD operations
 │   └── settings.py            # Configuration settings
@@ -41,7 +41,7 @@ Read more about **_uv_** on uv's official web page [here](https://docs.astral.sh
 Uv needs to be installed on your computer before running the sync command, if you don't want to install uv, you can skip this step and go to the step where **venv** and **pip** is used instead of **uv**.  
 Follow this to install uv: https://docs.astral.sh/uv/getting-started/installation/
 ```
-uv sync --locked
+uv sync
 ```
 
 ### Not convinced by uv ? you are free to use venv and pip
