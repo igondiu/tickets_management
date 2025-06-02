@@ -13,6 +13,7 @@ class TicketStatus(str, Enum):
 
 
 class Ticket(SQLModel, table=True):
+    # Primary key will also auto increment the id
     id: Optional[int] = Field(default=None, primary_key=True)
     title: str = Field(index=True)
     description: str
