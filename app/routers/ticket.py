@@ -6,7 +6,7 @@ from typing import List
 from app.models.ticket import Ticket
 from app.schemas.ticket import TicketCreate, TicketRead, TicketUpdate
 from app.database import get_session
-import app.kernels.ticket as ticket_kernels
+import app.crud.ticket as ticket_crud
 
 router = APIRouter(tags=["tickets"], prefix="/v1")
 
@@ -18,7 +18,7 @@ def create_ticket(ticket: TicketCreate, session: Session = Depends(get_session))
     """Create a new ticket."""
     try:
         db_ticket = Ticket.model_validate(ticket)
-        ticket_kernels.post_ticket(session, db_ticket)
+        ticket_crud.post_ticket(session, db_ticket)
         return db_ticket
     except Exception as all_e:
         logger.exception(f"An exception occurred while creating ticket: \n{all_e}")
@@ -76,7 +76,7 @@ def update_ticket(
                 media_type="text/plain",
             )
 
-        ticket_kernels.put_ticket(session, db_ticket, ticket)
+        ticket_crud.put_ticket(session, db_ticket, ticket)
         return db_ticket
     except Exception as all_e:
         logger.exception(
@@ -99,7 +99,7 @@ def close_ticket(ticket_id: int, session: Session = Depends(get_session)):
                 content=f"Ticket with id {ticket_id} not found",
                 media_type="text/plain",
             )
-        ticket_kernels.close_ticket(session, db_ticket)
+        ticket_crud.close_ticket(session, db_ticket)
         return db_ticket
     except Exception as all_e:
         logger.exception(
