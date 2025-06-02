@@ -1,20 +1,14 @@
 from datetime import datetime
-from enum import Enum
 from typing import Optional
-from sqlmodel import SQLModel, Field
+from pydantic import BaseModel, Field
+
+from app.models.ticket import TicketStatus
 
 
-# Define an Enum for the status field
-class TicketStatus(str, Enum):
-    open = "open"
-    stalled = "stalled"
-    closed = "closed"
-
-
-class TicketBase(SQLModel):
+class TicketBase(BaseModel):
     title: str
     description: str
-    status: TicketStatus = Field(default=TicketStatus.open)
+    status: TicketStatus = Field(default=TicketStatus.OPEN)
 
 
 class TicketCreate(TicketBase):
@@ -26,7 +20,7 @@ class TicketRead(TicketBase):
     created_at: datetime
 
 
-class TicketUpdate(SQLModel):
+class TicketUpdate(BaseModel):
     title: Optional[str] = None
     description: Optional[str] = None
     status: Optional[TicketStatus] = None
