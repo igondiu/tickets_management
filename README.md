@@ -77,6 +77,8 @@ To run the unit tests execute this command:
 ```shell
 python -m pytest tests/
 ```
+Code base unit tests coverage is 84%:  
+![img.png](readme_images/img.png)
 
 ## Run the application
 To run the application, make sure you created virtual environment and installed project dependencies.  

@@ -13,7 +13,7 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(current_dir)
 
 # Add parent directory to sys.path so that no import errors occur when pytest is run from the terminal
-sys.path.insert(0, parent_dir)
+sys.path.insert(0, os.path.join(parent_dir, "app"))
 
 from app.main import application
 from app.database import get_session
