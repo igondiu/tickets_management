@@ -88,3 +88,16 @@ python app/main.py
 ```
 
 In a web browser paste this URL: http://localhost:8000  A welcome page will show :).
+
+## Run the application in Docker
+To run this app in a docker container, execute these commands:
+
+1. build the image
+```shell
+docker build -t ticket_mgmt .
+```
+
+2. Start container from image previously created
+```shell
+docker run -d --name ticket_mgmt_container -p 8000:8000 ticket_mgmt
+```

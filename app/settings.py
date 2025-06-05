@@ -24,4 +24,3 @@ if not os.path.exists(LOGS_DIR):
     os.makedirs(LOGS_DIR)
 
 LOGS_LEVEL = os.environ.get("LOGS_LEVEL", "DEBUG") # Default logs level is DEBUG
-

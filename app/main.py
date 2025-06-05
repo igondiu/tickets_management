@@ -6,6 +6,7 @@ from pathlib import Path
 
 # Append root dir path to the sys path so that imports are correctly working no matters from where the app is run.
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import uvicorn
 from fastapi import FastAPI
@@ -56,4 +57,4 @@ def setup_app():
 
 if __name__ == "__main__":
     setup_app()
-    uvicorn.run(application, port=8000, host="localhost")
+    uvicorn.run(application, port=8000, host="0.0.0.0")
