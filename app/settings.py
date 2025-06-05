@@ -5,9 +5,9 @@ from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-env_vars_loaded = load_dotenv(os.path.join(BASE_DIR, '.env'))
+env_vars_loaded = load_dotenv(os.path.join(BASE_DIR, 'ticket_mgmt.env'))
 if not env_vars_loaded:
-    # Exit if env variables are not loaded from the .env file.
+    print("Unable to load environment variables from ticket_mgmt.env, program will exit now.")
     exit(1)
 
 APP_NAME = "tickets_manager"
